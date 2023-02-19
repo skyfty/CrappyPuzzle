@@ -77,4 +77,8 @@ public class Player : MonoBehaviour
         }
         return false;
     }
+
+    public void ChangeStoryValue(int tempStoryValue) {
+        storyValue = tempStoryValue;
+    }
 }

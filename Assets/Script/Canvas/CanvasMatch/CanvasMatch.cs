@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using DG.Tweening;
 
 public class CanvasMatch : MonoBehaviour
@@ -13,6 +14,7 @@ public class CanvasMatch : MonoBehaviour
     public GameObject canvasWin;
     public GameObject canvasTip;
     public GameObject canvasItem;
+    public GameObject canvasStory;
     public GameObject buttonFail;
 
     public GameObject player;
@@ -39,10 +41,17 @@ public class CanvasMatch : MonoBehaviour
 
     private Tweener publicTweener;
     private Sequence publicSequence;
+
+    public enum CanvasMatchState {
+        Story,
+        Action,
+    }
+    public CanvasMatchState canvasMatchState;
     // Start is called before the first frame update
     void Start()
     {
         SetItem();
+        canvasMatchState = CanvasMatchState.Action;
     }
 
     // Update is called once per frame
@@ -51,6 +60,15 @@ public class CanvasMatch : MonoBehaviour
         if (player!=null) {
             goldText.GetComponent<Text>().text = player.GetComponent<Player>().gold.ToString();
             diamondText.GetComponent<Text>().text = player.GetComponent<Player>().diamond.ToString();
+        }
+        switch (canvasMatchState) {
+            case CanvasMatchState.Story:
+                StoryUpdate();
+                break;
+            case CanvasMatchState.Action:
+                break;
+            default:
+                break;
         }
     }
 
@@ -252,6 +270,28 @@ public class CanvasMatch : MonoBehaviour
             publicSequence.Append(flyItem.transform.DORotate(new Vector3(0.0f,0.0f,0.0f), 0.1f));
             //publicSequence.Join(flyItem.transform.DOScale(new Vector3(tempScale,tempScale,1.0f), 0.5f));
             publicSequence.OnComplete(UseItemComplete);
+        }
+    }
+
+    public void ToStoryState(GameObject tempStoryPoint) {
+        if (canvasMatchState==CanvasMatchState.Action) {
+            canvasItem.SetActive(false);
+            canvasStory.GetComponent<CanvasStory>().ShowStory(tempStoryPoint,true);
+            canvasMatchState = CanvasMatchState.Story;
+        }
+    }
+    public void ToActionState(GameObject tempStoryPoint) {
+        if (canvasMatchState==CanvasMatchState.Story) {
+            canvasItem.SetActive(true);
+            canvasStory.GetComponent<CanvasStory>().ShowStory(tempStoryPoint,false);
+            player.GetComponent<Player>().ChangeStoryValue(tempStoryPoint.GetComponent<StoryPoint>().changeStoryValue);
+            canvasMatchState = CanvasMatchState.Action;
+        }
+    }
+
+    public void StoryUpdate() {
+        if (Input.GetMouseButtonDown (0)){//} && !EventSystem.current.IsPointerOverGameObject()) {
+            canvasStory.GetComponent<CanvasStory>().Touch();
         }
     }
 /*
