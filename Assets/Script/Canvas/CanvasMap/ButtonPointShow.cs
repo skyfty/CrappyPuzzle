@@ -26,7 +26,8 @@ public class ButtonPointShow : MonoBehaviour
     }
 
     private void OnEnable() {
-        player = this.transform.GetComponent<ButtonPoint>().player.GetComponent<Player>();  //gameManager.GetComponent<GameManager>().
+        player = GameObject.Find("Player").GetComponent<Player>();
+        //player = this.transform.GetComponent<ButtonPoint>().player.GetComponent<Player>();  //gameManager.GetComponent<GameManager>().
         //Debug.Log(player.storyValue);
         switch(buttonPointShowType) {
             case ButtonPointShowType.KeepShow:

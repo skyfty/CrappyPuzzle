@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasRoom : MonoBehaviour
+public class ImageBack : MonoBehaviour
 {
     public int id;
-    public GameObject back;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +16,4 @@ public class CanvasRoom : MonoBehaviour
     {
         
     }
-
-
 }

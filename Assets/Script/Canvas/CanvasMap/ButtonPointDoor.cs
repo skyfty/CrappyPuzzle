@@ -14,6 +14,7 @@ public class ButtonPointDoor : MonoBehaviour
     public Sprite openSprite;
     public Sprite closeSprite;
     private GameObject canvasMatch;
+    private GameObject web;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class ButtonPointDoor : MonoBehaviour
     }
 
     public void Click() {
+        GameObject.Find("Web").GetComponent<Web>().EnterRoom(79,cityId,roomId);
         if (isOpen) {
             this.transform.parent.transform.parent.transform.parent.GetComponent<CanvasMap>().ToCityRoom(cityId,roomId);
         } else {

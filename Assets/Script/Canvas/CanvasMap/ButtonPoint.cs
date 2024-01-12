@@ -6,6 +6,7 @@ public class ButtonPoint : MonoBehaviour
 {
     public GameObject canvasMatch;
     public GameObject player;
+    public GameObject web;
     [System.Serializable]
     public enum ButtonPointType {
         Door,
@@ -15,6 +16,8 @@ public class ButtonPoint : MonoBehaviour
         Password,
     }
     public ButtonPointType buttonPointType;
+
+    public int id;
     /*
     public bool isActive;
     public bool isInitialShow;

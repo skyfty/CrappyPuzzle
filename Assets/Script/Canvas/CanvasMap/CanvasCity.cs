@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanvasCity : MonoBehaviour
 {
+    public int id;
     public GameObject[] room;
     // Start is called before the first frame update
     void Start()

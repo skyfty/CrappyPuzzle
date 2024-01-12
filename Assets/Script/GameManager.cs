@@ -269,7 +269,7 @@ public class GameManager : MonoBehaviour
         camera.transform.position = new Vector3(0,1,-5);
         camera.transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
         match.SetActive(false);
-        office.SetActive(true);
+        //office.SetActive(true);
         canvasManager.GetComponent<CanvasManager>().ChangeMainStateFromMatchToOffice();
     }
 

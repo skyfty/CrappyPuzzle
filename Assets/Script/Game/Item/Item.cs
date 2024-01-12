@@ -52,7 +52,7 @@ public class Item : MonoBehaviour
     public void Initial(int tempCount) {
         count = tempCount;
     }
-    /*
+    
     public void Initial(int tempId, Sprite tempIconSprit, Sprite tempShowSprit) {
         id = tempId;
         iconSprit = tempIconSprit;
@@ -66,5 +66,5 @@ public class Item : MonoBehaviour
     public void Reset() {
         isSelect = false;
     }
-    */
+    
 }

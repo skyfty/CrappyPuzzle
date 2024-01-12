@@ -122,7 +122,7 @@ public class CanvasMatch : MonoBehaviour
         int tempItemNumber = 0;
         for (int i=0;i<gameManager.GetComponent<GameManager>().player.GetComponent<Player>().itemBag.Length;i++) {
             if (gameManager.GetComponent<GameManager>().player.GetComponent<Player>().itemBag[i].count!=0) {
-                item[tempItemNumber] = GameObject.Instantiate(gameManager.GetComponent<GameManager>().itemManager.GetComponent<ItemManager>().itemPrefab[gameManager.GetComponent<GameManager>().player.GetComponent<Player>().itemBag[i].id]);
+                item[tempItemNumber] = GameObject.Instantiate(gameManager.GetComponent<GameManager>().itemManager.GetComponent<ItemManager>().itemProject[gameManager.GetComponent<GameManager>().player.GetComponent<Player>().itemBag[i].id]);
                 item[tempItemNumber].transform.SetParent(content.transform);
                 item[tempItemNumber].transform.localPosition = Vector3.zero;
                 item[tempItemNumber].transform.localRotation = Quaternion.Euler(0.0f,0.0f,0.0f);
